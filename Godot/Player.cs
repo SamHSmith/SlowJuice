@@ -5,11 +5,17 @@ public class Player : KinematicBody2D {
 
     private Vector2 _velocity;
     private Vector2 _direction;
+    
+    private AnimatedSprite _animatedSprite;
+
+    public override void _Ready() {
+        _animatedSprite = GetNode<AnimatedSprite>("Sprite");
+    }
 
     private static Vector2 GetInputDirection() {
         var direction = new Vector2();
         if (Input.IsActionPressed("ui_right"))
-            direction.x += 1;//Changed it to += so that the net movement from pressing up and down is 0
+            direction.x += 1; 
 
         if (Input.IsActionPressed("ui_left"))
             direction.x += -1;
@@ -25,9 +31,17 @@ public class Player : KinematicBody2D {
 
     public override void _PhysicsProcess(float delta) {
         _direction = GetInputDirection();
-        
+
+        // Idle 
+        if (Vector2.Zero == _direction)
+            _animatedSprite.Play("Idle");
+
         // Walk movement
-        _velocity = _direction * _walkSpeed;
-        MoveAndSlide(_velocity);
+        else {
+            _velocity = _direction * _walkSpeed;
+            LookAt(Position + _direction);
+            MoveAndSlide(_velocity);
+            _animatedSprite.Play("Walk");
+        }
     }
 }
