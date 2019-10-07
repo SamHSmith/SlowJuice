@@ -4,7 +4,8 @@ public class Player : KinematicBody2D {
     [Export] private int _walkSpeed = 200;
 
     private Vector2 _velocity;
-    private Vector2 _direction;
+    private Vector2 _movementDirection;
+    
     
     private AnimatedSprite _animatedSprite;
 
@@ -30,16 +31,16 @@ public class Player : KinematicBody2D {
     }
 
     public override void _PhysicsProcess(float delta) {
-        _direction = GetInputDirection();
+        _movementDirection = GetInputDirection();
 
         // Idle 
-        if (Vector2.Zero == _direction)
+        if (Vector2.Zero == _movementDirection)
             _animatedSprite.Play("Idle");
 
         // Walk movement
         else {
-            _velocity = _direction * _walkSpeed;
-            LookAt(Position + _direction);
+            _velocity = _movementDirection * _walkSpeed;
+            SetRotation(_movementDirection.Angle());
             MoveAndSlide(_velocity);
             _animatedSprite.Play("Walk");
         }
