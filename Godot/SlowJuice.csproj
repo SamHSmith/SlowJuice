@@ -49,8 +49,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Player\HealthBar.cs" />
+    <Compile Include="Scripts\Player\Player.cs" />
+    <Compile Include="Scripts\Player\PlayerStats.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />

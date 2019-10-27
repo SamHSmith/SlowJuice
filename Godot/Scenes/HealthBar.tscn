@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Player/HealthBar.cs" type="Script" id=1]
+[ext_resource path="res://Sprites/HealthBar/health_bar_border.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/HealthBar/health_bar_progress.png" type="Texture" id=3]
+
+[node name="HealthBar" type="Control"]
+margin_left = -32.0
+margin_top = -64.0
+margin_right = -32.0
+margin_bottom = -64.0
+rect_scale = Vector2( 1.5, 1.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="HealthBarTextureUnder" type="TextureProgress" parent="."]
+margin_right = 16.0
+margin_bottom = 4.0
+rect_scale = Vector2( 2.70758, 2.70758 )
+value = 100.0
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+tint_progress = Color( 0.482353, 0, 0, 1 )
+
+[node name="HealthBarTexture" type="TextureProgress" parent="."]
+rect_scale = Vector2( 2.70758, 2.70758 )
+value = 100.0
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+tint_progress = Color( 0, 1, 0, 1 )
+
+[node name="UpdateTween" type="Tween" parent="."]

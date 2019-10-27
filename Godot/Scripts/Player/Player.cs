@@ -5,8 +5,7 @@ public class Player : KinematicBody2D {
 
     private Vector2 _velocity;
     private Vector2 _movementDirection;
-    
-    
+
     private AnimatedSprite _animatedSprite;
 
     public override void _Ready() {
@@ -16,7 +15,7 @@ public class Player : KinematicBody2D {
     private static Vector2 GetInputDirection() {
         var direction = new Vector2();
         if (Input.IsActionPressed("ui_right"))
-            direction.x += 1; 
+            direction.x += 1;
 
         if (Input.IsActionPressed("ui_left"))
             direction.x += -1;
